@@ -37,8 +37,8 @@ module Yandex
     end
     alias_method :get_langs, :langs
 
-    def detect(text)
-      lang = visit('/detect', text: text)['lang']
+    def detect(text, lang_hints = [])
+      lang = visit('/detect', text: text, hint: lang_hints.join(','))['lang']
       lang == '' ? nil : lang
     end
 
